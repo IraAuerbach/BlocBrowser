@@ -13,6 +13,7 @@
 		73826D0B1AAE26CB000A0F4D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73826D0A1AAE26CB000A0F4D /* Images.xcassets */; };
 		73826D0E1AAE26CB000A0F4D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73826D0C1AAE26CB000A0F4D /* LaunchScreen.xib */; };
 		73826D1A1AAE26CB000A0F4D /* BlocBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 73826D191AAE26CB000A0F4D /* BlocBrowserTests.m */; };
+		73826D251AAE2750000A0F4D /* WebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73826D241AAE2750000A0F4D /* WebBrowserViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,8 @@
 		73826D131AAE26CB000A0F4D /* BlocBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlocBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73826D181AAE26CB000A0F4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73826D191AAE26CB000A0F4D /* BlocBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlocBrowserTests.m; sourceTree = "<group>"; };
+		73826D231AAE2750000A0F4D /* WebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebBrowserViewController.h; sourceTree = "<group>"; };
+		73826D241AAE2750000A0F4D /* WebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebBrowserViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,8 @@
 			children = (
 				73826D051AAE26CB000A0F4D /* AppDelegate.h */,
 				73826D061AAE26CB000A0F4D /* AppDelegate.m */,
+				73826D231AAE2750000A0F4D /* WebBrowserViewController.h */,
+				73826D241AAE2750000A0F4D /* WebBrowserViewController.m */,
 				73826D081AAE26CB000A0F4D /* BlocBrowser-Prefix.pch */,
 				73826D0A1AAE26CB000A0F4D /* Images.xcassets */,
 				73826D0C1AAE26CB000A0F4D /* LaunchScreen.xib */,
@@ -215,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73826D071AAE26CB000A0F4D /* AppDelegate.m in Sources */,
+				73826D251AAE2750000A0F4D /* WebBrowserViewController.m in Sources */,
 				73826D041AAE26CB000A0F4D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
