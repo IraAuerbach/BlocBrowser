@@ -62,6 +62,8 @@
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
     //[self.activityIndicator startAnimating];
+    
+    self.awesomeToolbar.frame = CGRectMake(20, 100, 280, 60);
 }
 
 -(void) viewWillLayoutSubviews {
@@ -76,7 +78,6 @@
     self.textField.frame = CGRectMake(0,0,width,itemHeight);
     self.webView.frame = CGRectMake(0, CGRectGetMaxY(self.textField.frame), width, browserHeight);
     
-    self.awesomeToolbar.frame = CGRectMake((width - 280) / 2, 100, 280, 60);
 }
 
 #pragma mark - UITextFieldDelegate
@@ -173,8 +174,39 @@
 
 #pragma mark - AwesomeFloatingToolbarDelegate
 
--(void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didSelectButtonWithTitle:(NSString *)title {
-    if ([title isEqual:kWebBrowserBackString]) { //NSLocalizedString(@"Back", @"Back Command")]) {
+-(void)floatingToolbar:(AwesomeFloatingToolbar *)toolbar didTryToPanWithOffset:(CGPoint)offset {
+    CGPoint startingPoint = toolbar.frame.origin;
+    CGPoint newPoint = CGPointMake(startingPoint.x + offset.x, startingPoint.y + offset.y);
+    
+    CGRect potentialNewFrame = CGRectMake(newPoint.x, newPoint.y, CGRectGetWidth(toolbar.frame), CGRectGetHeight(toolbar.frame));
+    
+    if (CGRectContainsRect(self.view.bounds, potentialNewFrame)) {
+        toolbar.frame = potentialNewFrame;
+    }
+}
+
+-(void)floatingToolbar:(AwesomeFloatingToolbar *)toolbar didPinchWithScale:(CGFloat)scale {
+
+    //for text
+    CGAffineTransform currentTransform = CGAffineTransformIdentity;
+    CGAffineTransform newTransform = CGAffineTransformScale(currentTransform, scale, scale);
+    toolbar.transform = newTransform;
+    
+    //for frame
+    CGFloat newWidth = CGRectGetWidth(toolbar.frame)*scale;
+    CGFloat newHeight = CGRectGetHeight(toolbar.frame)*scale;
+
+    CGRect potentialNewFrame = CGRectMake(toolbar.frame.origin.x, toolbar.frame.origin.y, newHeight, newWidth);
+   
+    if (CGRectContainsRect(self.view.bounds, potentialNewFrame) && newHeight>15) {
+        toolbar.frame = potentialNewFrame;
+        NSLog(@"new width %f, new height %f", newWidth, newHeight);
+    }
+}
+
+-(void)floatingToolbar:(AwesomeFloatingToolbar *)toolbar didButtonPressed:(NSString *)title {
+    NSLog(@"%@", title);
+    if ([title isEqual:kWebBrowserBackString]) {
         [self.webView goBack];
     } else if ([title isEqual:kWebBrowserForwardString]) {
         [self.webView goForward];
