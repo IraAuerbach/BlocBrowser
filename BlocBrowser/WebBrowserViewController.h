@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#define kWebBrowserBackString NSLocalizedString(@"Back", @"Back Command")
+#define kWebBrowserForwardString NSLocalizedString(@"Forward", @"Forward Command")
+#define kWebBrowserStopString NSLocalizedString(@"Stop", @"Stop Command")
+#define kWebBrowserRefreshString NSLocalizedString(@"Refresh", @"Refresh Command")
+
 @interface WebBrowserViewController : UIViewController
 
 -(void) resetWebView;
